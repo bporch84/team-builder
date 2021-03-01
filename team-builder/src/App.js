@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React, { useState } from "react"
 import './App.css';
+import Team from "./Team"
+import TeamForm from "./Forms"
+import styled from "styled-components"
+
+const StyledTitle = styled.div`
+height: 100vh;
+text-align: center;
+
+h1 {
+font-size: 50px;
+color: maroon;
+}
+`
+
+const members = [
+  {
+    name: "Brian Johnson",
+    role: "The Brain",
+    email: "bjohnson@lamps.com",
+  }
+]
 
 function App() {
+  const [team, setTeam] = useState(members)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <StyledTitle className="container">
+      <h1>The Breakfast Club</h1>
+      <div>
+      <TeamForm team={team} setTeam={setTeam} />
+      <Team team={team} />
+      </div>
+    </StyledTitle>
+  )
 }
 
 export default App;
